@@ -195,6 +195,43 @@ textarea{width:100%;padding:11px 12px;border-radius:10px;background:var(--rail);
 .perks{padding-left:20px;color:var(--mute);display:grid;gap:5px;font-size:14px;margin:12px 0}
 #promodal{position:fixed;inset:0;background:#000a;display:grid;place-items:center;padding:16px;z-index:8}#promodal .card{position:relative;max-height:92vh;overflow:auto}#promodal h3{text-align:center}#promodal .x{position:absolute;top:12px;right:14px;font-size:20px;color:var(--mute)}#promodal .sub{text-align:center}
 .chip.lock{opacity:.85}
+
+@keyframes floaty{0%{opacity:0;transform:translateY(.6em)}40%{opacity:1}100%{opacity:0;transform:translateY(-1.3em)}}
+@keyframes neonp{50%{box-shadow:0 0 .3em #ff4fd8,0 0 .6em #ff4fd8 inset;filter:hue-rotate(60deg)}}
+@keyframes glitchk{0%,100%{transform:translate(0)}25%{transform:translate(-.1em,.05em)}50%{transform:translate(.1em,-.05em)}75%{transform:translate(.05em,.1em)}}
+@keyframes fall{to{background-position:0 60px,0 37px}}@keyframes twink{50%{opacity:.35}}@keyframes rainf{to{background-position:0 40px,0 55px}}@keyframes conf{to{background-position:0 48px,20px 74px,35px 82px}}
+.dc-horns::before,.dc-horns::after{content:"";position:absolute;top:-.55em;border-left:.3em solid transparent;border-right:.3em solid transparent;border-bottom:.95em solid #e0314b}.dc-horns::before{left:.05em;transform:rotate(-22deg)}.dc-horns::after{right:.05em;transform:rotate(22deg)}
+.dc-flame{inset:-.35em;border-radius:50%;background:conic-gradient(#ff3d00,#ffb300,#ff3d00,#ffb300,#ff3d00);filter:blur(.12em);animation:spin 1.6s linear infinite;z-index:0}
+.dc-frost{inset:-.3em;border-radius:50%;border:.12em solid #cfefff;box-shadow:0 0 .6em #8fdcff,inset 0 0 .3em #8fdcff;animation:pulse 2.4s ease-in-out infinite;z-index:0}.dc-frost::before{content:"❄️";position:absolute;right:-.45em;top:-.45em;font-size:.9em}
+.dc-neon{inset:-.25em;border-radius:50%;border:.14em solid #ff4fd8;box-shadow:0 0 .6em #ff4fd8,0 0 1.2em #ff4fd8 inset;animation:neonp 1.8s ease-in-out infinite;z-index:0}
+.dc-hearts::before{content:"❤️";position:absolute;right:-.5em;top:0;animation:floaty 2.2s ease-in infinite}.dc-hearts::after{content:"💗";position:absolute;left:-.5em;top:.2em;animation:floaty 2.9s ease-in infinite .6s}
+.dc-glitch{inset:0;border-radius:var(--r,50%);box-shadow:-.12em 0 #ff2d6f,.12em 0 #2df6ff;animation:glitchk 1s steps(2,end) infinite;z-index:0}
+.pc{position:relative}.pc[class*="fx-"]::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2}
+.fx-snow::after{background:radial-gradient(#fff 1.5px,transparent 2px) 0 0/60px 60px,radial-gradient(#fff 1px,transparent 1.5px) 15px 10px/37px 37px;animation:fall 6s linear infinite}
+.fx-stars::after{background:radial-gradient(#fff 1px,transparent 1.6px) 0 0/45px 45px,radial-gradient(#ffe9a8 1.2px,transparent 1.8px) 20px 25px/70px 70px;animation:twink 2s ease-in-out infinite}
+.fx-rain::after{background:linear-gradient(transparent 0 55%,#8fcfffaa 55%) 0 0/14px 40px,linear-gradient(transparent 0 60%,#8fcfff88 60%) 6px 0/23px 55px;animation:rainf .8s linear infinite}
+.fx-confetti::after{background:radial-gradient(#ff6b9d 2.5px,transparent 3px) 0 0/48px 48px,radial-gradient(#ffb84d 2.5px,transparent 3px) 20px 10px/64px 64px,radial-gradient(#7ad7f0 2.5px,transparent 3px) 35px 30px/52px 52px;animation:conf 5s linear infinite}
+#set{position:fixed;inset:0;background:var(--bg);z-index:9;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+.sbar{display:flex;align-items:center;gap:14px;padding:14px 16px;font-size:18px}.sbar button{font-size:22px;color:var(--text)}
+#setc{flex:1;overflow-y:auto;padding:0 16px 24px;max-width:640px;width:100%;margin:0 auto}
+.sgrp{color:var(--mute);font-size:14px;margin:18px 0 8px}.slist{background:var(--side);border-radius:14px;overflow:hidden}
+.srow{display:flex;align-items:center;gap:14px;width:100%;padding:14px;text-align:left;border-bottom:1px solid var(--line)}.srow:last-child{border-bottom:0}.srow .si{width:26px;text-align:center}.srow i{margin-left:auto;color:var(--mute);font-style:normal}.srow:hover{background:var(--panel)}
+.sbox{background:var(--side);border-radius:14px;padding:14px;margin-bottom:12px}.sbox label:first-child{margin-top:0}
+.orbs{display:inline-flex;gap:6px;align-items:center;background:var(--panel);border-radius:10px;padding:6px 12px;font-weight:700}
+.shopg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.sc{background:var(--side);border-radius:14px;padding:12px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.sc .pv{height:84px;display:grid;place-items:center;width:100%}.sc .pv .av{width:56px;height:56px;font-size:20px}.sc .pc{width:100%;height:70px}.sc .pc .bn{height:100%}
+.sc b{font-size:14px}.sc .pr{color:var(--mute);font-size:13px}.sc .go{margin:0;padding:8px;font-size:14px}.sc .go[disabled]{opacity:.5}
+.qrow{background:var(--side);border-radius:14px;padding:14px;margin-bottom:10px}.qrow .bar{height:8px;border-radius:99px;background:var(--panel);margin:10px 0;overflow:hidden}.qrow .bar i{display:block;height:100%;background:var(--acc)}
+.qrow .top{display:flex;justify-content:space-between;gap:10px;align-items:center}.qrow .go{margin:0;max-width:120px;padding:8px}
+#ctx{display:flex;align-items:center;gap:10px;padding:8px 16px;background:var(--panel);font-size:13px;color:var(--mute)}#ctx span{flex:1}#ctx .ib{width:28px;height:28px}
+.rep{font-size:12.5px;color:var(--mute);margin-bottom:2px;cursor:pointer;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:100%}.rep span{opacity:.8}
+.mimg{max-width:min(320px,100%);max-height:300px;border-radius:12px;margin-top:4px;display:block;cursor:zoom-in}.mimg.sm{height:40px;width:auto;margin:0;border-radius:6px;cursor:default}.ed{color:var(--mute);font-size:11px}
+#lb{position:fixed;inset:0;background:#000d;z-index:10;display:grid;place-items:center;padding:16px}#lb img{max-width:100%;max-height:100%;border-radius:10px}
+#form #att{margin:0;padding:0;width:44px;height:auto;background:var(--panel);color:var(--text);border-radius:10px;font-weight:400}
+#top #srch{margin-left:auto;background:var(--panel);border-radius:8px;width:34px;height:34px}#top #sq{max-width:160px;padding:7px 10px}
+body.compact .m{padding:1px 0}body.compact .m.g{margin-top:8px}body.compact .m .av{width:30px;height:30px;font-size:12px}body.compact .m .sp{width:30px}
+body.rm *,body.rm *::before,body.rm *::after{animation:none!important}
+#note{margin-top:0}.pbody.nt{padding-top:0}
 </style>
 </head>
 <body>
@@ -224,10 +261,10 @@ textarea{width:100%;padding:11px 12px;border-radius:10px;background:var(--rail);
   <div class="me"><div id="mavw" style="flex:none"></div><div><b id="mn"></b><small id="ms">Online</small></div><button class="ib" id="edit" title="Edit profile" aria-label="Edit profile">⚙</button><button class="ib" id="probtn" title="Huddle Pro" aria-label="Huddle Pro">✨</button><button class="ib" id="logout" title="Log out" aria-label="Log out">⎋</button></div>
  </aside>
  <section id="main">
-  <header id="top"><button id="menu" aria-label="Channels">☰</button><span id="cn"></span></header>
+  <header id="top"><button id="menu" aria-label="Channels">☰</button><span id="cn"></span><input id="sq" class="hide" placeholder="Search this channel" aria-label="Search messages"><button class="ib" id="srch" aria-label="Search messages" title="Search">🔍</button></header>
   <div id="body">
    <div id="chat"><div id="msgs" aria-live="polite"></div>
-    <form id="form"><button type="button" class="ib" id="emb" aria-label="Emoji" title="Emoji">😀</button><input id="in" autocomplete="off" aria-label="Message"><button>Send</button></form></div>
+    <div id="ctx" class="hide"></div><form id="form"><button type="button" class="ib" id="att" aria-label="Attach image" title="Attach image">📎</button><input type="file" id="attf" accept="image/*" hidden><button type="button" class="ib" id="emb" aria-label="Emoji" title="Emoji">😀</button><input id="in" autocomplete="off" aria-label="Message"><button>Send</button></form></div>
    <div id="voice" class="hide"><div id="tiles"></div><button class="go" id="join" style="max-width:240px">Join voice</button></div>
    <div id="fr" class="hide"></div>
    <aside id="mem"></aside>
@@ -238,6 +275,8 @@ textarea{width:100%;padding:11px 12px;border-radius:10px;background:var(--rail);
 <div id="ucard" class="hide"><div id="ucardc" class="pc"></div></div>
 <div id="promodal" class="hide"><div class="card wide" id="proc"></div></div>
 <div id="epk" class="hide"></div>
+<div id="set" class="hide"><div class="sbar"><button id="sx" aria-label="Back">←</button><b id="sett">Settings</b></div><div id="setc"></div></div>
+<div id="lb" class="hide"></div>
 <div id="toast" class="hide" role="status"></div>
 
 <script>
@@ -257,14 +296,14 @@ const EMO=["😎","🔥","🐱","👾","🌸","🚀","🦊","🎧","⭐","🍕"]
 const pick=l=>l[Math.floor(Math.random()*l.length)];
 const hx=(c,d)=>/^#[0-9a-f]{6}$/i.test(c||"")?c:d,en=(v,l,d)=>l.includes(v)?v:d;
 const lum=c=>{const n=parseInt(c.slice(1),16);return(.299*(n>>16)+.587*(n>>8&255)+.114*(n&255))/255};
-const DEF={name:"Someone",color:"#ffb84d",pr:"",status:"",bio:"",tag:"",badges:[],stat:"online",pt:"none",av:{t:"ini",e:"😎",img:"",bg:"grad",c1:"#ffb84d",c2:"#ff6b9d",an:"none",sh:"c",dc:"none"},bn:{t:"grad",c1:"#ffb84d",c2:"#b9a3ff",c3:"#7ad7f0",sp:8,img:""},nm:{fx:"none",ff:"def"}};
+const DEF={name:"Someone",color:"#ffb84d",pr:"",status:"",bio:"",tag:"",badges:[],stat:"online",pt:"none",fx:"none",nofr:0,av:{t:"ini",e:"😎",img:"",bg:"grad",c1:"#ffb84d",c2:"#ff6b9d",an:"none",sh:"c",dc:"none"},bn:{t:"grad",c1:"#ffb84d",c2:"#b9a3ff",c3:"#7ad7f0",sp:8,img:""},nm:{fx:"none",ff:"def"}};
 const BADGES=["🎮","🔥","💎","⭐","🚀","🎨","🎧","👑","🧠","🌙","🍕","🦊"];
 const IMG=/^data:image\\/jpeg;base64,[A-Za-z0-9+\\/=]+$/;
 const isOn=u=>online[u]&&P(u).stat!=="invisible";
 const norm=p=>{p=p||{};return{...DEF,...p,av:{...DEF.av,c1:p.color||DEF.av.c1,...(p.av||{})},bn:{...DEF.bn,...(p.bn||{})},nm:{...DEF.nm,...(p.nm||{})}}};
 const P=id=>norm(profiles[id]||{name:"Someone",color:"#888"});
 function avFrom(p,id,dot){p=norm(p);const a=p.av,c1=hx(a.c1,"#ffb84d"),c2=hx(a.c2,"#ff6b9d");
- const bg=en(a.bg,["solid","grad","aurora"],"grad"),an=en(a.an,ANIMS,"none"),t=en(a.t,["ini","emo","img"],"ini"),r=SH[en(a.sh,Object.keys(SH),"c")],dc=en(a.dc,["none","crown","halo","sparkle","ears","orbit"],"none");
+ const bg=en(a.bg,["solid","grad","aurora"],"grad"),an=en(a.an,ANIMS,"none"),t=en(a.t,["ini","emo","img"],"ini"),r=SH[en(a.sh,Object.keys(SH),"c")],dc=en(a.dc,["none","crown","halo","sparkle","ears","orbit","horns","flame","frost","neon","hearts","glitch"],"none");
  let inner,img=false;
  if(t==="img"&&IMG.test(a.img||"")){inner=\`<img src="\${a.img}" alt="">\`;img=true}
  else if(t==="emo"&&a.e)inner=esc(String(a.e).slice(0,8));else inner=esc(ini(p.name));
@@ -279,7 +318,7 @@ function bnFrom(p){p=norm(p);const b=p.bn,t=en(b.t,["grad","aurora","stripes","d
  return \`<div class="bn bn-\${t}" style="\${im}--c1:\${hx(b.c1,"#ffb84d")};--c2:\${hx(b.c2,"#b9a3ff")};--c3:\${hx(b.c3,"#7ad7f0")};--sp:\${Math.min(20,Math.max(2,+b.sp||8))}s"></div>\`}
 function cardHTML(p,id){p=norm(p);const bd=(p.badges||[]).filter(x=>BADGES.includes(x));
  return bnFrom(p)+\`<div class="pbody"><div class="pav">\${avFrom(p,id,1)}</div><div class="pnm">\${nameFrom(p)}\${p.pr?\`<small>\${esc(p.pr)}</small>\`:""}</div>\${p.un?\`<div class="pun">@\${esc(p.un)}</div>\`:""}\${p.status?\`<div class="pst">\${esc(p.status)}</div>\`:""}\${bd.length?\`<div class="bdgs">\${bd.map(x=>\`<span>\${x}</span>\`).join("")}</div>\`:""}\${p.bio?\`<p class="pbio">\${esc(p.bio)}</p>\`:""}\${p.since?\`<div class="psn"><b>Member since</b><br>\${new Date(p.since).toLocaleDateString([],{year:"numeric",month:"short",day:"numeric"})}</div>\`:""}</div>\`}
-function setCard(el,p,id){p=norm(p);el.className="pc pt-"+en(p.pt,["none","tint","neon"],"none");el.style.cssText=\`--c1:\${hx(p.bn.c1,"#ffb84d")};--c2:\${hx(p.bn.c2,"#b9a3ff")}\`;el.innerHTML=cardHTML(p,id)}
+function setCard(el,p,id){p=norm(p);el.className="pc pt-"+en(p.pt,["none","tint","neon"],"none")+" fx-"+en(p.fx,["none","snow","stars","rain","confetti"],"none");el.style.cssText=\`--c1:\${hx(p.bn.c1,"#ffb84d")};--c2:\${hx(p.bn.c2,"#b9a3ff")}\`;el.innerHTML=cardHTML(p,id)}
 
 const mine=()=>Object.keys(servers).sort((a,b)=>servers[a].ts-servers[b].ts);
 const memb=s=>servers[s]?servers[s].members:[];
@@ -368,7 +407,7 @@ $("of").onsubmit=async e=>{e.preventDefault();if(step<3){step++;renderStep();ret
  const n=draft.name.trim();if(n.length<2){step=0;renderStep();return $("oerr").textContent="Display name needs at least 2 characters."}
  draft.name=n;$("oerr").textContent="";
  send({t:"profile",p:draft});const w=editing;editing=false;onbOpen=false;profiles[uid]=draft;if(w){show("app");self();members();side();render()}else if(!entered)enter()};
-$("edit").onclick=()=>startOnb(true);
+$("edit").onclick=()=>openSettings();
 function self(){$("mavw").innerHTML=av(uid);$("mn").innerHTML=nameHTML(uid);$("ms").textContent=P(uid).status||"Online"}
 $("ucard").onclick=e=>{const id=$("ucard").dataset.id;
  if(e.target.id==="ucard"){$("ucard").classList.add("hide");return}
@@ -379,7 +418,7 @@ document.addEventListener("click",e=>{const el=e.target.closest("[data-u]");if(!
  setCard($("ucardc"),P(id),id);$("ucard").dataset.id=id;let b="";
  if(id===uid)b='<button class="go" id="ced">Edit profile</button>';
  else{const f=friends.find(x=>x.id===id);b=!f?'<button class="go" id="cfa">Add friend</button>':f.st==="f"?'<button class="go" id="cdm">Message</button>':f.st==="in"?'<button class="go" id="cfa">Accept friend request</button>':'<button class="go" disabled style="opacity:.6">Request sent</button>'}
- $("ucardc").insertAdjacentHTML("beforeend",b);$("ucard").classList.remove("hide")});
+ $("ucardc").insertAdjacentHTML("beforeend",(id!==uid?\`<div class="pbody nt"><label>Note (only visible to you)</label><textarea id="note" rows="2" maxlength="200" placeholder="Click to add a note">\${esc(ls.get("huddle_note_"+id)||"")}</textarea></div>\`:"")+b);$("ucard").classList.remove("hide")});
 function enter(){entered=true;onbOpen=false;show("app");self();members();refreshServers()}
 
 /* servers */
@@ -451,12 +490,12 @@ function frPanel(){if(!home||cur)return;
  const row=(x,acts)=>\`<div class="frr"><div class="frl" data-u="\${esc(x.id)}">\${av(x.id,1)}<div><div>\${nameHTML(x.id)}</div><small>\${P(x.id).un?"@"+esc(P(x.id).un)+" · ":""}\${isOn(x.id)?"Online":"Offline"}</small></div></div><div class="fra">\${acts}</div></div>\`;
  if(frTab==="add")h+=\`<form id="afr" class="frf"><p class="sub" style="margin:0 0 8px">Add a friend with their username.</p><div class="row2"><input id="fu" placeholder="username" autocapitalize="none" maxlength="20" aria-label="Username"><button class="go" style="margin:0;max-width:110px">Send</button></div><div class="sub" id="fmsg" style="margin:8px 0 0"></div></form>\`;
  else if(frTab==="pend"){h+=inc.map(x=>row(x,\`<button class="ib" data-act="acc" data-id="\${esc(x.id)}" title="Accept" aria-label="Accept">✓</button><button class="ib red" data-act="dec" data-id="\${esc(x.id)}" title="Decline" aria-label="Decline">✕</button>\`)).join("")+out.map(x=>row(x,\`<small>Sent</small><button class="ib" data-act="dec" data-id="\${esc(x.id)}" title="Cancel request" aria-label="Cancel request">✕</button>\`)).join("");if(!inc.length&&!out.length)h+=empty("No pending requests.")}
- else{const l=frTab==="online"?fl.filter(x=>isOn(x.id)):fl;h+=l.map(x=>row(x,\`<button class="ib" data-act="dm" data-id="\${esc(x.id)}" title="Message" aria-label="Message">💬</button><button class="ib" data-act="rm" data-id="\${esc(x.id)}" title="Remove friend" aria-label="Remove friend">✕</button>\`)).join("")||empty(frTab==="online"?"No friends online right now.":"No friends yet. Use Add friend to send a request.")}
+ else{const l=frTab==="online"?fl.filter(x=>isOn(x.id)):fl;h+=l.map(x=>row(x,\`<button class="ib" data-act="wave" data-id="\${esc(x.id)}" title="Wave" aria-label="Wave">👋</button><button class="ib" data-act="dm" data-id="\${esc(x.id)}" title="Message" aria-label="Message">💬</button><button class="ib" data-act="rm" data-id="\${esc(x.id)}" title="Remove friend" aria-label="Remove friend">✕</button>\`)).join("")||empty(frTab==="online"?"No friends online right now.":"No friends yet. Use Add friend to send a request.")}
  $("fr").innerHTML=h}
 $("fr").addEventListener("click",e=>{const t=e.target.closest("[data-tab]");if(t){frTab=t.dataset.tab;frPanel();return}
  if(e.target.id==="frcreate")return openCreate();
  const b=e.target.closest("[data-act]");if(!b)return;const id=b.dataset.id,a=b.dataset.act;
- if(a==="dm")openDM(id);else if(a==="acc")send({t:"fresp",id,ok:1});else if(a==="dec")send({t:"fresp",id,ok:0});else if(a==="rm")send({t:"fremove",id})});
+ if(a==="dm")openDM(id);else if(a==="wave"){send({t:"msg",dm:id,text:"👋 Wave!"});toast("Waved at "+P(id).name)}else if(a==="acc")send({t:"fresp",id,ok:1});else if(a==="dec")send({t:"fresp",id,ok:0});else if(a==="rm")send({t:"fremove",id})});
 $("fr").addEventListener("submit",e=>{e.preventDefault();const u=$("fu").value.trim();if(u){send({t:"fadd",user:u});$("fu").value="";$("fmsg").textContent="Sending…"}});
 
 /* channels */
@@ -471,10 +510,13 @@ function open(t,c){cur={t,c};msgs=[];$("side").classList.remove("open");
  $("in").placeholder=d?"Message "+P(c).name:"Message #"+lbl(c);render();
  send(d?{t:"open",dm:c}:{t:"open",sid:curS,ch:c})}
 function render(){if(!cur||cur.t==="v")return;const box=$("msgs");const near=box.scrollHeight-box.scrollTop-box.clientHeight<120||!box.children.length;let h="",lu=null,lt=0;
- msgs.forEach(m=>{const g=m.uid!==lu||m.ts-lt>3e5;const tm=new Date(m.ts).toLocaleString([],{hour:"numeric",minute:"2-digit",...(Date.now()-m.ts>864e5?{month:"short",day:"numeric"}:{})});
-  h+=\`<div class="m\${g?" g":""}" data-mid="\${esc(m.id)}">\${g?av(m.uid):'<div class="sp"></div>'}<div>\${g?\`<div class="t">\${nameHTML(m.uid)}<small>\${esc(tm)}</small></div>\`:""}<p>\${fmt(m.text)}</p>\${rxHTML(m)}</div></div>\`;lu=m.uid;lt=m.ts});
+ (()=>{const q=sqv();return q?msgs.filter(x=>String(x.text||"").toLowerCase().includes(q)):msgs})().forEach(m=>{const g=m.uid!==lu||m.ts-lt>3e5;const tm=new Date(m.ts).toLocaleString([],{hour:"numeric",minute:"2-digit",...(Date.now()-m.ts>864e5?{month:"short",day:"numeric"}:{})});
+  h+=\`<div class="m\${g?" g":""}" data-mid="\${esc(m.id)}">\${g?av(m.uid):'<div class="sp"></div>'}<div>\${g?\`<div class="t">\${nameHTML(m.uid)}<small>\${esc(tm)}</small></div>\`:""}\${m.re?repHTML(m.re):""}\${m.text?\`<p>\${fmt(m.text)}\${m.ed?' <small class="ed">(edited)</small>':""}</p>\`:""}\${m.img&&IMG.test(m.img)?\`<img class="mimg" src="\${m.img}" alt="Attachment">\`:""}\${rxHTML(m)}</div></div>\`;lu=m.uid;lt=m.ts});
  box.innerHTML=h||\`<p class="empty">\${cur.t==="d"?"This is the start of your conversation with "+esc(P(cur.c).name)+".":"This is the start of #"+esc(lbl(cur.c))+". Send the first message."}</p>\`;if(near)box.scrollTop=1e9}
-$("form").onsubmit=e=>{e.preventDefault();const t=$("in").value.trim();if(!t||!cur||cur.t==="v")return;$("in").value="";send(cur.t==="d"?{t:"msg",dm:cur.c,text:t}:{t:"msg",sid:curS,ch:cur.c,text:t})};
+$("form").onsubmit=e=>{e.preventDefault();const t=$("in").value.trim();if((!t&&!attImg)||!cur||cur.t==="v")return;const tgt=cur.t==="d"?{dm:cur.c}:{sid:curS,ch:cur.c};
+ if(editId){if(t)send({t:"edit",...tgt,id:editId,text:t});editId=null}
+ else send({t:"msg",...tgt,text:t,img:attImg||undefined,re:rep?rep.id:undefined});
+ $("in").value="";rep=null;attImg=null;drawCtx()};
 function members(){if(!curS||home)return;const ids=memb(curS).sort((a,b)=>(isOn(b)?1:0)-(isOn(a)?1:0)||P(a).name.localeCompare(P(b).name));
  $("mem").innerHTML=\`<div class="chh">Members, \${ids.filter(isOn).length} online</div>\`+ids.map(i=>\`<div class="mm\${isOn(i)?"":" off"}" data-u="\${esc(i)}">\${av(i,1)}\${nameHTML(i)}</div>\`).join("")}
 $("menu").onclick=()=>$("side").classList.toggle("open");
@@ -496,9 +538,16 @@ const emo=e=>e[0]===":"&&customEm[e.slice(1,-1)]?\`<img class="ce" src="\${custo
 const rxHTML=m=>{const r=m.rx||{},k=Object.keys(r);return k.length?\`<div class="rxs">\${k.map(e=>\`<button class="rx\${r[e].includes(uid)?" on":""}" data-mid="\${esc(m.id)}" data-e="\${esc(e)}">\${emo(e)} \${r[e].length}</button>\`).join("")}</div>\`:""};
 const react=(id,e)=>send(cur.t==="d"?{t:"react",dm:cur.c,id,e}:{t:"react",sid:curS,ch:cur.c,id,e});
 function selMsg(el){const was=el&&el.classList.contains("sel");document.querySelectorAll(".m.sel").forEach(x=>{x.classList.remove("sel");const q=x.querySelector(".qr");if(q)q.remove()});if(!el||was)return;
- el.classList.add("sel");el.insertAdjacentHTML("beforeend",\`<div class="qr">\${["👍","❤️","😂","😮","😢","🔥"].map(e=>\`<button data-e="\${e}" aria-label="React \${e}">\${e}</button>\`).join("")}<button data-e="+" aria-label="More reactions">➕</button></div>\`)}
+ const m=msgs.find(x=>x.id===el.dataset.mid);if(!m)return;const mine=m.uid===uid,owner=curS&&S()&&S().owner===uid;
+ el.classList.add("sel");el.insertAdjacentHTML("beforeend",\`<div class="qr">\${["👍","❤️","😂","🔥"].map(e=>\`<button data-e="\${e}" aria-label="React \${e}">\${e}</button>\`).join("")}<button data-e="+" aria-label="More reactions">➕</button><button data-a="rep" aria-label="Reply" title="Reply">↩️</button>\${mine?'<button data-a="edit" aria-label="Edit" title="Edit">✏️</button>':""}\${mine||owner?'<button data-a="del" aria-label="Delete" title="Delete">🗑️</button>':""}</div>\`)}
 $("msgs").addEventListener("click",e=>{const rb=e.target.closest(".rx");if(rb){react(rb.dataset.mid,rb.dataset.e);return}
- const qb=e.target.closest(".qr button");if(qb){const id=qb.closest(".m").dataset.mid;if(qb.dataset.e==="+")openPicker(em=>react(id,em),false);else react(id,qb.dataset.e);selMsg(null);return}
+ const im=e.target.closest(".mimg");if(im&&!im.classList.contains("sm")){$("lb").innerHTML=\`<img src="\${im.src}" alt="">\`;$("lb").classList.remove("hide");return}
+ const rp=e.target.closest(".rep");if(rp){const t=document.querySelector(\`.m[data-mid="\${rp.dataset.go}"]\`);if(t)t.scrollIntoView({block:"center"});return}
+ const qb=e.target.closest(".qr button");if(qb){const id=qb.closest(".m").dataset.mid,m=msgs.find(x=>x.id===id);selMsg(null);if(!m)return;const a=qb.dataset.a;
+  if(a==="rep"){rep={id,uid:m.uid};editId=null;drawCtx();$("in").focus()}
+  else if(a==="edit"){editId=id;rep=null;$("in").value=m.text||"";drawCtx();$("in").focus()}
+  else if(a==="del")send(cur.t==="d"?{t:"del",dm:cur.c,id}:{t:"del",sid:curS,ch:cur.c,id});
+  else if(qb.dataset.e==="+")openPicker(em=>react(id,em),false);else react(id,qb.dataset.e);return}
  const m=e.target.closest(".m");if(!m||e.target.closest("[data-u]"))return;selMsg(m)});
 function openPicker(cb,keep){pk.cb=cb;pk.keep=keep;$("epk").classList.remove("hide");drawPicker()}
 function closePicker(){$("epk").classList.add("hide");pk.cb=null}
@@ -526,6 +575,76 @@ $("promodal").addEventListener("click",e=>{if(e.target.id==="promodal"){$("promo
  else if(a==="grant"||a==="revoke"){const u=$("pau").value.trim();if(u)send({t:"proset",user:u,on:a==="grant"?1:0})}
  else if(a==="all")send({t:"proall",on:pro.all?0:1})});
 $("probtn").onclick=openPro;
+
+/* ===== messages: reply / edit / attach / search ===== */
+let rep=null,editId=null,attImg=null;
+const sqv=()=>{const e=$("sq");return e&&!e.classList.contains("hide")?e.value.trim().toLowerCase():""};
+const repHTML=r=>\`<div class="rep" data-go="\${esc(r.id)}">↩ \${nameHTML(r.uid)} <span>\${esc(String(r.text||"").slice(0,80))||"Image"}</span></div>\`;
+function drawCtx(){const c=$("ctx");let h="";
+ if(rep)h+=\`<span>↩ Replying to <b>\${esc(P(rep.uid).name)}</b></span><button class="ib" data-cx="rep" aria-label="Cancel reply">✕</button>\`;
+ if(editId)h+=\`<span>✏️ Editing message</span><button class="ib" data-cx="edit" aria-label="Cancel edit">✕</button>\`;
+ if(attImg)h+=\`<img class="mimg sm" src="\${attImg}" alt="Attachment preview"><span>Image attached</span><button class="ib" data-cx="img" aria-label="Remove image">✕</button>\`;
+ c.innerHTML=h;c.classList.toggle("hide",!h)}
+$("ctx").onclick=e=>{const b=e.target.closest("[data-cx]");if(!b)return;const k=b.dataset.cx;if(k==="rep")rep=null;else if(k==="edit"){editId=null;$("in").value=""}else attImg=null;drawCtx()};
+$("att").onclick=()=>$("attf").click();
+$("attf").onchange=e=>{const f=e.target.files[0];e.target.value="";if(!f)return;const rd=new FileReader();rd.onload=()=>{const im=new Image();im.onload=()=>{const s=Math.min(1,640/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext("2d").drawImage(im,0,0,c.width,c.height);attImg=c.toDataURL("image/jpeg",.7);if(attImg.length>85000)attImg=c.toDataURL("image/jpeg",.45);drawCtx()};im.onerror=()=>toast("Couldn’t read that image.");im.src=rd.result};rd.readAsDataURL(f)};
+$("lb").onclick=()=>$("lb").classList.add("hide");
+$("srch").onclick=()=>{const q=$("sq"),on=q.classList.contains("hide");q.classList.toggle("hide",!on);if(on)q.focus();else q.value="";render()};
+$("sq").oninput=()=>render();
+$("ucard").addEventListener("input",e=>{if(e.target.id==="note")ls.set("huddle_note_"+$("ucard").dataset.id,e.target.value)});
+
+/* ===== settings, shop, quests ===== */
+let wallet={orbs:0,own:[],quests:[]},setOpen=false,sv=null;
+let SET=Object.assign({theme:"dark",acc:"#ffb84d",compact:0,fs:15,rm:0,snd:1},(()=>{try{return JSON.parse(ls.get("huddle_set")||"{}")}catch(e){return{}}})());
+const THEMES={dark:{},amoled:{"--bg":"#000","--rail":"#000","--side":"#0b0b12","--panel":"#16161f","--line":"#25253a"},light:{"--bg":"#f3f2fb","--rail":"#e4e2f4","--side":"#ffffff","--panel":"#eceaf8","--line":"#d5d2ec","--text":"#1b1930","--mute":"#6a6690"}};
+const TVARS=["--bg","--rail","--side","--panel","--line","--text","--mute","--acc","--accx"];
+function applyTheme(){const r=document.documentElement.style;TVARS.forEach(v=>r.removeProperty(v));Object.entries(THEMES[SET.theme]||{}).forEach(([k,v])=>r.setProperty(k,v));
+ const a=hx(SET.acc,"#ffb84d");r.setProperty("--acc",a);r.setProperty("--accx",lum(a)>.55?"#1a1200":"#ffffff");r.setProperty("color-scheme",SET.theme==="light"?"light":"dark");
+ document.body.style.fontSize=(+SET.fs||15)+"px";document.body.classList.toggle("compact",!!+SET.compact);document.body.classList.toggle("rm",!!+SET.rm)}
+const saveSet=()=>{ls.set("huddle_set",JSON.stringify(SET));applyTheme()};
+let au=null;const beep=()=>{try{au=au||new(window.AudioContext||window.webkitAudioContext)();const o=au.createOscillator(),g=au.createGain();o.connect(g);g.connect(au.destination);o.frequency.value=740;g.gain.setValueAtTime(.08,au.currentTime);g.gain.exponentialRampToValueAtTime(.0001,au.currentTime+.18);o.start();o.stop(au.currentTime+.2)}catch(e){}};
+const SHOPI={dc:[["horns","Devil horns",150],["flame","Flame ring",250],["frost","Frost",250],["neon","Neon pulse",200],["hearts","Floating hearts",300],["glitch","Glitch",400]],fx:[["snow","Snowfall",300],["stars","Twinkling stars",300],["rain","Rain",350],["confetti","Confetti",450]]};
+let shopTab="dc";
+const sch=(k,o)=>\`<div class="chips">\${o.map(([v,l])=>\`<button class="chip\${String(SET[k])===String(v)?" on":""}" data-set="\${k}" data-v="\${v}">\${l}</button>\`).join("")}</div>\`;
+const pch=(k,o)=>\`<div class="chips">\${o.map(([v,l])=>\`<button class="chip\${String(P(uid)[k]||0)===String(v)?" on":""}" data-pp="\${k}" data-v="\${v}">\${l}</button>\`).join("")}</div>\`;
+function openSettings(v){setOpen=true;sv=v||null;$("set").classList.remove("hide");send({t:"wallet"});drawSettings()}
+function closeSettings(){setOpen=false;$("set").classList.add("hide")}
+function patchProfile(patch){const p=JSON.parse(JSON.stringify(norm(profiles[uid]||{name:"User"})));delete p.pro;Object.assign(p,patch);send({t:"profile",p});toast("Saved")}
+function equip(id){const [k,v]=id.split(":");const p=JSON.parse(JSON.stringify(norm(profiles[uid])));delete p.pro;if(k==="dc")p.av.dc=p.av.dc===v?"none":v;else p.fx=p.fx===v?"none":v;send({t:"profile",p})}
+function drawSettings(){const c=$("setc");const claim=(wallet.quests||[]).some(q=>q.done);
+ const T={account:"Account",privacy:"Data & Privacy",notif:"Notifications",appear:"Appearance",about:"About Huddle",shop:"Shop",quests:"Quests"};$("sett").textContent=sv?T[sv]:"Settings";
+ const row=(k,i,t,r)=>\`<button class="srow" data-sv="\${k}"><span class="si">\${i}</span>\${t}<i>\${r||"›"}</i></button>\`;let h="";
+ if(!sv)h=\`<div class="sgrp">Account Settings</div><div class="slist">\${row("account","👤","Account")}\${row("privacy","🔒","Data & Privacy")}\${row("notif","🔔","Notifications")}</div><div class="sgrp">App Settings</div><div class="slist">\${row("appear","🎨","Appearance")}\${row("about","ℹ️","About Huddle")}</div><div class="sgrp">Billing Settings</div><div class="slist">\${row("shop","🛍️","Shop","🔶 "+(wallet.orbs||0))}\${row("quests","🎯","Quests",claim?"🔴":"›")}\${row("pro","✨","Huddle Pro (Nitro)",pro.pro?"Active":"›")}</div>\`;
+ else if(sv==="account")h=\`<div class="pc" id="setcard"></div><div class="sbox" style="margin-top:12px"><button class="go" id="sedit" style="margin:0">Edit profile</button></div><div class="sbox"><button class="go" id="slogout" style="margin:0;background:var(--panel);color:var(--text)">Log out</button></div>\`;
+ else if(sv==="privacy")h=\`<div class="sbox"><label>Who can send me friend requests</label>\${pch("nofr",[["0","Everyone"],["1","Nobody"]])}<label>Appear as</label>\${pch("stat",[["online","Online"],["idle","Idle"],["dnd","Do not disturb"],["invisible","Invisible"]])}<p class="sub" style="font-size:13px;text-align:left;margin:10px 0 0">Your profile is visible to people who share a server with you or are your friends.</p></div>\`;
+ else if(sv==="notif")h=\`<div class="sbox"><label>Message sounds</label>\${sch("snd",[["1","On"],["0","Off"]])}</div>\`;
+ else if(sv==="appear")h=\`<div class="sbox"><label>Theme</label>\${sch("theme",[["dark","Dark"],["amoled","AMOLED"],["light","Light"]])}<label for="sacc">Accent color</label><input type="color" id="sacc" data-set="acc" value="\${hx(SET.acc,"#ffb84d")}"><label>Compact messages</label>\${sch("compact",[["0","Off"],["1","On"]])}<label for="sfs">Text size</label><input type="range" id="sfs" min="13" max="19" data-set="fs" value="\${SET.fs}"><label>Reduce motion</label>\${sch("rm",[["0","Off"],["1","On"]])}</div>\`;
+ else if(sv==="about")h=\`<div class="sbox"><b>Huddle</b><p class="sub" style="text-align:left;margin:8px 0 0">Servers, friends, DMs, voice calls, reactions and custom emojis. Version 2.</p></div>\`;
+ else if(sv==="shop"){const own=wallet.own||[],pp=P(uid);
+  h=\`<div class="sbox"><span class="orbs">🔶 \${wallet.orbs||0} Orbs</span><p class="sub" style="text-align:left;font-size:13px;margin:8px 0 0">Earn Orbs from Quests, then spend them on decorations and profile effects.</p></div><div class="frt"><button class="tab\${shopTab==="dc"?" on":""}" data-st="dc">Avatar decorations</button><button class="tab\${shopTab==="fx"?" on":""}" data-st="fx">Profile effects</button></div><div class="shopg">\`+
+  SHOPI[shopTab].map(([k,n,pr])=>{const id=shopTab+":"+k,has=own.includes(id),on=(shopTab==="dc"?pp.av.dc:pp.fx)===k;
+   const pv=shopTab==="dc"?avFrom({name:"A",color:"#ffb84d",av:{...pp.av,t:"ini",img:"",dc:k}},null):\`<div class="pc fx-\${k}"><div class="bn bn-grad" style="--c1:#5b4bd6;--c2:#c04bd6;--c3:#4bd6c0;--sp:8s"></div></div>\`;
+   const btn=has?\`<button class="go" data-shop="\${id}" data-act="eq">\${on?"Unequip":"Equip"}</button>\`:\`<button class="go" data-shop="\${id}" data-act="buy"\${(wallet.orbs||0)<pr?" disabled":""}>\${(wallet.orbs||0)<pr?"Not enough Orbs":"Buy"}</button>\`;
+   return \`<div class="sc"><div class="pv">\${pv}</div><b>\${n}</b><span class="pr">\${has?"Owned":"🔶 "+pr}</span>\${btn}</div>\`}).join("")+\`</div>\`}
+ else if(sv==="quests")h=\`<div class="sbox"><span class="orbs">🔶 \${wallet.orbs||0} Orbs</span></div>\`+(wallet.quests||[]).map(q=>\`<div class="qrow"><div class="top"><div><b>\${esc(q.title)}</b><div class="sub" style="text-align:left;font-size:13px;margin:2px 0 0">\${esc(q.desc)}</div></div>\${q.done?\`<button class="go" data-q="\${q.id}">Claim 🔶\${q.reward}</button>\`:\`<span class="pr" style="color:var(--mute);font-size:13px">\${q.claimed?"Claimed ✓":"🔶 "+q.reward}</span>\`}</div><div class="bar"><i style="width:\${Math.min(100,Math.round(100*q.prog/q.goal))}%"></i></div></div>\`).join("");
+ c.innerHTML=h;if(sv==="account")setCard($("setcard"),P(uid),uid)}
+$("set").addEventListener("click",e=>{const b=e.target.closest("[data-sv]");if(b){if(b.dataset.sv==="pro"){closeSettings();openPro();return}sv=b.dataset.sv;drawSettings();return}
+ if(e.target.closest("#sx")){if(sv){sv=null;drawSettings()}else closeSettings();return}
+ const s=e.target.closest("[data-set]");if(s&&s.type!=="color"&&s.type!=="range"){SET[s.dataset.set]=s.dataset.v;saveSet();drawSettings();return}
+ const p=e.target.closest("[data-pp]");if(p){patchProfile({[p.dataset.pp]:p.dataset.pp==="nofr"?+p.dataset.v:p.dataset.v});return}
+ const st=e.target.closest("[data-st]");if(st){shopTab=st.dataset.st;drawSettings();return}
+ const sh=e.target.closest("[data-shop]");if(sh){if(sh.dataset.act==="buy")send({t:"buy",id:sh.dataset.shop});else equip(sh.dataset.shop);return}
+ const q=e.target.closest("[data-q]");if(q){send({t:"qclaim",id:q.dataset.q});return}
+ if(e.target.id==="sedit"){closeSettings();startOnb(true)}if(e.target.id==="slogout")$("logout").click()});
+$("set").addEventListener("input",e=>{const k=e.target.dataset.set;if(!k||(e.target.type!=="color"&&e.target.type!=="range"))return;SET[k]=e.target.value;saveSet()});
+const _handle=handle;
+handle=function(m){_handle(m);
+ if(m.t==="wallet")wallet=m;
+ else if(m.t==="msg"&&m.m&&m.m.uid!==uid&&+SET.snd&&cur&&cur.t!=="v"&&m.sid===(cur.t==="d"?"@dm":curS)&&cur.c===m.ch)beep();
+ else if(m.t==="mu"&&cur&&cur.t!=="v"&&m.sid===(cur.t==="d"?"@dm":curS)&&cur.c===m.ch){const x=msgs.find(q=>q.id===m.id);if(x){x.text=m.text;x.ed=1;render()}}
+ else if(m.t==="md"&&cur&&cur.t!=="v"&&m.sid===(cur.t==="d"?"@dm":curS)&&cur.c===m.ch){msgs=msgs.filter(q=>q.id!==m.id);render()}
+ if(setOpen&&(m.t==="profiles"||m.t==="wallet"||m.t==="pro"||m.t==="finfo"))drawSettings()};
+applyTheme();
 
 /* voice */
 function voiceUi(){if(!cur||cur.t!=="v")return;const here=call&&call.sid===curS&&call.slug===cur.c;$("join").classList.toggle("hide",!!here);
@@ -580,15 +699,48 @@ const IMG=/^data:image\/jpeg;base64,[A-Za-z0-9+\/=]+$/;
 const chOf=sid=>db.servers[sid]?(db.servers[sid].channels||{text:["general","random","help"],voice:["voice","talk"]}):null;
 const slug=n=>String(n||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,24);
 let db={users:{},tokens:{},servers:{},ms:[],msgs:{},fr:[],emojis:{},admin:null,proAll:false},dirty=false;
-try{db=Object.assign(db,JSON.parse(fs.readFileSync(DB,"utf8")))}catch(e){}
-Object.entries(db.users).forEach(([n,u])=>{u.name=n});if(!db.admin){const f=Object.keys(db.users)[0];if(f)db.admin=f}
+if(!(process.env.UPSTASH_REDIS_REST_URL&&process.env.UPSTASH_REDIS_REST_TOKEN)){try{db=Object.assign(db,JSON.parse(fs.readFileSync(DB,"utf8")))}catch(e){}}
+const postLoad=()=>{db.fr=db.fr||[];db.emojis=db.emojis||{};db.tokens=db.tokens||{};db.servers=db.servers||{};db.ms=db.ms||[];db.msgs=db.msgs||{};Object.entries(db.users).forEach(([n,u])=>{u.name=n});if(!db.admin){const f=Object.keys(db.users)[0];if(f)db.admin=f}};postLoad();
 const isPro=u=>!!(u&&(u.pro||db.proAll||db.admin===u.name));
 const PRO_AN=["glow","ring","rainbow"],PRO_DC=["crown","sparkle","orbit"],PRO_FX=["grad","rainbow"];
 const EIMG=/^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+\/=]+$/;
 function gate(p){const q=JSON.parse(JSON.stringify(p));if(PRO_AN.includes(q.av.an))q.av.an="none";if(PRO_DC.includes(q.av.dc))q.av.dc="none";if(q.bn.t==="img")q.bn.t="grad";if(q.pt==="neon")q.pt="none";if(PRO_FX.includes(q.nm.fx))q.nm.fx="none";q.badges=(q.badges||[]).slice(0,3);return q}
+const SHOP={dc:{horns:150,flame:250,frost:250,neon:200,hearts:300,glitch:400},fx:{snow:300,stars:300,rain:350,confetti:450}};
+const dayKey=()=>new Date().toISOString().slice(0,10);
+const rid=()=>crypto.randomBytes(5).toString("hex");
+function shopGate(p,u){const q=JSON.parse(JSON.stringify(p)),own=u.own||[];if(SHOP.dc[q.av.dc]&&!own.includes("dc:"+q.av.dc))q.av.dc="none";if(q.fx&&q.fx!=="none"&&!own.includes("fx:"+q.fx))q.fx="none";return q}
+function wallet(u){if(u.orbs==null)u.orbs=100;u.own=u.own||[];u.q=u.q||{};const day=dayKey(),mt=u.mt&&u.mt.day===day?u.mt.n:0;
+ const servers=Object.values(db.servers).filter(s=>s.owner===u.id).length,frs=db.fr.filter(f=>(f.a===u.id||f.b===u.id)&&f.st==="f").length,dayOk=Date.now()-(u.q.daily||0)>72e6;
+ const qs=[{id:"daily",title:"Daily check-in",desc:"Come back every day for free Orbs",reward:50,prog:dayOk?1:0,goal:1,done:dayOk,claimed:!dayOk},
+  {id:"chat",title:"Chatterbox",desc:"Send 10 messages today",reward:100,prog:Math.min(mt,10),goal:10,done:mt>=10&&u.q.chat!==day,claimed:u.q.chat===day},
+  {id:"friend",title:"Make a friend",desc:"Have at least 1 friend",reward:150,prog:Math.min(frs,1),goal:1,done:frs>=1&&!u.q.friend,claimed:!!u.q.friend},
+  {id:"server",title:"Server builder",desc:"Create your own server",reward:150,prog:Math.min(servers,1),goal:1,done:servers>=1&&!u.q.server,claimed:!!u.q.server}];
+ return{t:"wallet",orbs:u.orbs,own:u.own,quests:qs}}
+const walletOut=ws=>{const u=byId(ws.uid);if(u)out(ws,wallet(u))};
+/* ---- storage: Upstash Redis when configured (survives restarts), otherwise a local file ---- */
+const RURL=(process.env.UPSTASH_REDIS_REST_URL||"").replace(/\/$/,""),RTOK=process.env.UPSTASH_REDIS_REST_TOKEN||"",REMOTE=!!(RURL&&RTOK);
+const rAuth={Authorization:"Bearer "+RTOK,"Content-Type":"application/json"};
+const redis=async cmds=>{const r=await fetch(RURL+"/pipeline",{method:"POST",headers:rAuth,body:JSON.stringify(cmds)});if(!r.ok)throw new Error("Upstash "+r.status);return r.json()};
+function parts(){const p={core:JSON.stringify({tokens:db.tokens,fr:db.fr,ms:db.ms,admin:db.admin,proAll:db.proAll}),servers:JSON.stringify(db.servers),emojis:JSON.stringify(db.emojis)};
+ Object.entries(db.users).forEach(([n,u])=>{p["u:"+n]=JSON.stringify(u)});
+ Object.entries(db.msgs).forEach(([k,l])=>{let a=l.slice(-300),j=JSON.stringify(a);while(j.length>800000&&a.length>5){a=a.slice(Math.ceil(a.length/4));j=JSON.stringify(a)}p["m:"+k]=j});return p}
+let lastSaved={},saving=false;
+async function saveRemote(){if(saving)return;saving=true;try{const p=parts(),cmds=[];
+ for(const k in p)if(lastSaved[k]!==p[k])cmds.push(["SET","huddle:"+k,p[k]]);
+ for(const k in lastSaved)if(!(k in p))cmds.push(["DEL","huddle:"+k]);
+ let batch=[],size=0;const run=async()=>{if(batch.length){await redis(batch);batch=[];size=0}};
+ for(const c of cmds){const n=c[2]?c[2].length:10;if(size+n>700000)await run();batch.push(c);size+=n}await run();lastSaved=p;dirty=false}
+ catch(e){console.error("Save failed:",e.message);dirty=true}finally{saving=false}}
+async function loadRemote(){const kr=await fetch(RURL+"/keys/huddle:*",{headers:rAuth});if(!kr.ok)throw new Error("Upstash "+kr.status+" (check the URL and token)");
+ const keys=(await kr.json()).result||[];const o={};
+ for(let i=0;i<keys.length;i+=50){const b=keys.slice(i,i+50),res=await redis(b.map(k=>["GET",k]));b.forEach((k,j)=>{o[k.slice(7)]=res[j].result})}
+ const d={users:{},msgs:{}};
+ for(const k in o){if(o[k]==null)continue;let v;try{v=JSON.parse(o[k])}catch(e){continue}
+  if(k==="core")Object.assign(d,v);else if(k==="servers")d.servers=v;else if(k==="emojis")d.emojis=v;else if(k.startsWith("u:"))d.users[k.slice(2)]=v;else if(k.startsWith("m:"))d.msgs[k.slice(2)]=v}
+ db=Object.assign(db,d);postLoad();lastSaved=parts();console.log("Loaded "+keys.length+" records from Upstash")}
 const flush=()=>{try{fs.writeFileSync(DB,JSON.stringify(db))}catch(e){console.error(e)}};
-setInterval(()=>{if(dirty){dirty=false;flush()}},3000);
-process.on("SIGTERM",()=>{flush();process.exit(0)});
+setInterval(()=>{if(!dirty)return;if(REMOTE)saveRemote();else{dirty=false;flush()}},3000);
+process.on("SIGTERM",async()=>{if(REMOTE)await saveRemote();else flush();process.exit(0)});
 
 const DEFAULT_ICE=[{urls:["stun:stun.l.google.com:19302","stun:stun1.l.google.com:19302","stun:stun.cloudflare.com:3478"]},
  {urls:["turn:openrelay.metered.ca:80","turn:openrelay.metered.ca:443","turns:openrelay.metered.ca:443?transport=tcp"],username:"openrelayproject",credential:"openrelayproject"}];
@@ -602,9 +754,9 @@ function cleanProfile(p){p=p||{};const a=p.av||{},b=p.bn||{},n=p.nm||{};
  const name=str(p.name,24).trim();if(name.length<2)return null;
  const img=IMG.test(a.img||"")&&a.img.length<40000?a.img:"",bimg=IMG.test(b.img||"")&&b.img.length<60000?b.img:"";
  return{name,color:hx(p.color,"#ffb84d"),pr:str(p.pr,16),status:str(p.status,40),bio:str(p.bio,160),
-  tag:str(p.tag,4).replace(/[^A-Za-z0-9]/g,"").toUpperCase(),badges:[...new Set(Array.isArray(p.badges)?p.badges:[])].filter(x=>BADGES.includes(x)).slice(0,6),
+  fx:en(p.fx,["none","snow","stars","rain","confetti"],"none"),nofr:p.nofr?1:0,tag:str(p.tag,4).replace(/[^A-Za-z0-9]/g,"").toUpperCase(),badges:[...new Set(Array.isArray(p.badges)?p.badges:[])].filter(x=>BADGES.includes(x)).slice(0,6),
   stat:en(p.stat,["online","idle","dnd","invisible"],"online"),pt:en(p.pt,["none","tint","neon"],"none"),
-  av:{t:en(a.t,["ini","emo","img"],"ini"),e:str(a.e,8),img,bg:en(a.bg,["solid","grad","aurora"],"grad"),c1:hx(a.c1,"#ffb84d"),c2:hx(a.c2,"#ff6b9d"),an:en(a.an,["none","pulse","float","glow","ring","wiggle","rainbow"],"none"),sh:en(a.sh,["c","r","s"],"c"),dc:en(a.dc,["none","crown","halo","sparkle","ears","orbit"],"none")},
+  av:{t:en(a.t,["ini","emo","img"],"ini"),e:str(a.e,8),img,bg:en(a.bg,["solid","grad","aurora"],"grad"),c1:hx(a.c1,"#ffb84d"),c2:hx(a.c2,"#ff6b9d"),an:en(a.an,["none","pulse","float","glow","ring","wiggle","rainbow"],"none"),sh:en(a.sh,["c","r","s"],"c"),dc:en(a.dc,["none","crown","halo","sparkle","ears","orbit","horns","flame","frost","neon","hearts","glitch"],"none")},
   bn:{t:en(b.t,["grad","aurora","stripes","dots","img"],"grad"),img:bimg,c1:hx(b.c1,"#ffb84d"),c2:hx(b.c2,"#b9a3ff"),c3:hx(b.c3,"#7ad7f0"),sp:Math.min(20,Math.max(2,+b.sp||8))},
   nm:{fx:en(n.fx,["none","grad","glow","rainbow"],"none"),ff:en(n.ff,["def","mono","serif","fun"],"def")}}}
 
@@ -613,7 +765,7 @@ const byId=id=>Object.values(db.users).find(u=>u.id===id);
 const out=(ws,o)=>ws.readyState===1&&ws.send(JSON.stringify(o));
 const all=o=>wss.clients.forEach(c=>c.uid&&out(c,o));
 const rnd=(n,al)=>Array.from({length:n},()=>al[crypto.randomInt(al.length)]).join("");
-const profiles=()=>{const l={};Object.entries(db.users).forEach(([n,u])=>{if(!u.profile)return;const pr=isPro(u);l[u.id]={...(pr?u.profile:gate(u.profile)),un:n,since:u.ts||0,pro:pr}});return l};
+const profiles=()=>{const l={};Object.entries(db.users).forEach(([n,u])=>{if(!u.profile)return;const pr=isPro(u);l[u.id]={...shopGate(pr?u.profile:gate(u.profile),u),un:n,since:u.ts||0,pro:pr}});return l};
 const pres=()=>{const l={};wss.clients.forEach(c=>{if(c.uid)l[c.uid]=c.vc||l[c.uid]||""});return l};
 const isMember=(u,s)=>db.ms.some(m=>m.uid===u&&m.sid===s);
 function mineFor(uid){const o={};db.ms.filter(m=>m.uid===uid).forEach(m=>{const s=db.servers[m.sid];if(s)o[m.sid]={name:s.name,owner:s.owner,code:s.code,ts:s.ts,icon:s.icon||"",channels:chOf(m.sid),members:db.ms.filter(x=>x.sid===m.sid).map(x=>x.uid)}});return o}
@@ -637,7 +789,7 @@ const onConn=ws=>{
   let m;try{m=JSON.parse(raw)}catch(e){return}
   if(!ws.uid){
    const login=name=>{const u=db.users[name];ws.uid=u.id;ws.ch=null;ws.sid=null;ws.vc=null;
-    out(ws,{t:"authok",uid:u.id,token:m.token||tok(name)});out(ws,{t:"mine",servers:mineFor(u.id)});out(ws,{t:"friends",list:friendsFor(u.id)});out(ws,{t:"emojis",list:db.emojis});proInfo(ws);all({t:"profiles",list:profiles()});all({t:"pres",list:pres()})};
+    out(ws,{t:"authok",uid:u.id,token:m.token||tok(name)});out(ws,{t:"mine",servers:mineFor(u.id)});out(ws,{t:"friends",list:friendsFor(u.id)});out(ws,{t:"emojis",list:db.emojis});proInfo(ws);walletOut(ws);all({t:"profiles",list:profiles()});all({t:"pres",list:pres()})};
    if(m.t==="token"){const n=db.tokens[m.token];if(n&&db.users[n])return login(n);return out(ws,{t:"autherr",bad:1})}
    if(++ws.fails>10)return ws.close();
    const name=String(m.user||"").toLowerCase().trim(),pass=String(m.pass||"");
@@ -669,58 +821,4 @@ const onConn=ws=>{
   else if(m.t==="leave"){const s=db.servers[m.sid];if(!s||s.owner===ws.uid)return;db.ms=db.ms.filter(x=>!(x.uid===ws.uid&&x.sid===m.sid));dirty=true;if(ws.vc&&ws.vc.startsWith(m.sid+".")){ws.vc=null;all({t:"pres",list:pres()})}ws.sid=null;allMine()}
   else if(m.t==="delete"){const s=db.servers[m.sid];if(!s||s.owner!==ws.uid)return;delete db.servers[m.sid];db.ms=db.ms.filter(x=>x.sid!==m.sid);
    Object.keys(db.msgs).forEach(k=>{if(k.startsWith(m.sid+"/"))delete db.msgs[k]});dirty=true;
-   wss.clients.forEach(c=>{if(c.vc&&c.vc.startsWith(m.sid+"."))c.vc=null});allMine();all({t:"pres",list:pres()})}
-  else if(m.t==="open"&&m.dm){const f=frFind(ws.uid,m.dm);if(!f||f.st!=="f")return;ws.sid="@dm";ws.ch=m.dm;
-   out(ws,{t:"hist",sid:"@dm",ch:m.dm,msgs:(db.msgs["@dm/"+pairKey(ws.uid,m.dm)]||[]).slice(-100)})}
-  else if(m.t==="open"&&isMember(ws.uid,m.sid)&&chOf(m.sid).text.includes(m.ch)){ws.sid=m.sid;ws.ch=m.ch;out(ws,{t:"hist",sid:m.sid,ch:m.ch,msgs:(db.msgs[m.sid+"/"+m.ch]||[]).slice(-100)})}
-  else if(m.t==="msg"&&m.dm&&me.profile){const f=frFind(ws.uid,m.dm);if(!f||f.st!=="f"||now-ws.last<300)return;ws.last=now;
-   const text=str(m.text,2000).trim();if(!text)return;const o={id:crypto.randomBytes(5).toString("hex"),uid:ws.uid,text,ts:now};
-   const k="@dm/"+pairKey(ws.uid,m.dm),l=db.msgs[k]=db.msgs[k]||[];l.push(o);if(l.length>1000)l.splice(0,l.length-1000);dirty=true;
-   wss.clients.forEach(c=>{if(!c.uid)return;const other=c.uid===ws.uid?m.dm:c.uid===m.dm?ws.uid:null;if(other&&c.sid==="@dm"&&c.ch===other)out(c,{t:"msg",sid:"@dm",ch:other,m:o})})}
-  else if(m.t==="msg"&&isMember(ws.uid,m.sid)&&me.profile&&chOf(m.sid).text.includes(m.ch)){
-   if(now-ws.last<300)return;ws.last=now;const text=str(m.text,2000).trim();if(!text)return;
-   const o={id:crypto.randomBytes(5).toString("hex"),uid:ws.uid,text,ts:now};
-   const k=m.sid+"/"+m.ch,l=db.msgs[k]=db.msgs[k]||[];l.push(o);if(l.length>1000)l.splice(0,l.length-1000);dirty=true;
-   wss.clients.forEach(c=>c.uid&&c.sid===m.sid&&c.ch===m.ch&&out(c,{t:"msg",sid:m.sid,ch:m.ch,m:o}))}
-  else if(m.t==="chadd"){const s=db.servers[m.sid];if(!s||s.owner!==ws.uid)return;const type=m.type==="voice"?"voice":"text",n=slug(m.name);
-   if(!n)return out(ws,{t:"err",m:"Channel names can use letters and numbers."});
-   s.channels=chOf(m.sid);if(s.channels[type].includes(n))return out(ws,{t:"err",m:"That channel already exists."});
-   if(s.channels[type].length>=25)return out(ws,{t:"err",m:"That’s the maximum number of channels."});
-   s.channels[type].push(n);dirty=true;allMine()}
-  else if(m.t==="fadd"){const tu=m.id?byId(m.id):db.users[String(m.user||"").toLowerCase().trim()];
-   if(!tu)return out(ws,{t:"finfo",m:"No user found with that username."});
-   if(tu.id===ws.uid)return out(ws,{t:"finfo",m:"That’s you!"});
-   const ex=frFind(ws.uid,tu.id);
-   if(ex&&ex.st==="f")return out(ws,{t:"finfo",m:"You’re already friends."});
-   if(ex&&ex.a===ws.uid)return out(ws,{t:"finfo",m:"Request already sent."});
-   if(db.fr.filter(f=>f.a===ws.uid||f.b===ws.uid).length>=200)return out(ws,{t:"finfo",m:"Friend list is full."});
-   if(ex)ex.st="f";else db.fr.push({a:ws.uid,b:tu.id,st:"p"});dirty=true;sendFr(ws.uid);sendFr(tu.id);
-   out(ws,{t:"finfo",m:ex?"You’re now friends!":"Friend request sent."})}
-  else if(m.t==="fresp"){const ex=frFind(ws.uid,m.id);if(!ex||ex.st!=="p")return;
-   if(m.ok&&ex.b===ws.uid)ex.st="f";else if(!m.ok)db.fr=db.fr.filter(f=>f!==ex);else return;dirty=true;sendFr(ws.uid);sendFr(m.id)}
-  else if(m.t==="fremove"){const ex=frFind(ws.uid,m.id);if(!ex)return;db.fr=db.fr.filter(f=>f!==ex);dirty=true;sendFr(ws.uid);sendFr(m.id)}
-  else if(m.t==="react"){const tg=target(ws,m);if(!tg)return;const e=m.e;
-   if(typeof e!=="string"||e.length>12||!(/^:[a-z0-9_]{2,16}:$/.test(e)?db.emojis[e.slice(1,-1)]:/\p{Extended_Pictographic}/u.test(e)))return;
-   const msg=(db.msgs[tg.key]||[]).find(x=>x.id===m.id);if(!msg)return;msg.rx=msg.rx||{};const a=msg.rx[e]=msg.rx[e]||[];const i=a.indexOf(ws.uid);
-   if(i>=0)a.splice(i,1);else if(Object.keys(msg.rx).length<=20)a.push(ws.uid);if(!a.length)delete msg.rx[e];dirty=true;
-   tg.each((c,sid,ch)=>out(c,{t:"rx",sid,ch,id:m.id,rx:msg.rx}))}
-  else if(m.t==="emadd"){if(!isPro(me))return out(ws,{t:"err",m:"Custom emojis are a Huddle Pro perk."});const n=String(m.name||"");
-   if(!/^[a-z0-9_]{2,16}$/.test(n)||!EIMG.test(m.img||"")||m.img.length>14000)return out(ws,{t:"err",m:"That emoji couldn’t be added."});
-   const ex=db.emojis[n];if(ex&&ex.by!==ws.uid)return out(ws,{t:"err",m:"That emoji name is taken."});
-   if(!ex&&Object.values(db.emojis).filter(x=>x.by===ws.uid).length>=25)return out(ws,{t:"err",m:"You can make up to 25 custom emojis."});
-   db.emojis[n]={img:m.img,by:ws.uid};dirty=true;all({t:"emojis",list:db.emojis});out(ws,{t:"finfo",m:"Added :"+n+":"})}
-  else if(m.t==="emdel"){const x=db.emojis[m.name];if(!x||(x.by!==ws.uid&&db.admin!==me.name))return;delete db.emojis[m.name];dirty=true;all({t:"emojis",list:db.emojis})}
-  else if(m.t==="proset"){if(db.admin!==me.name)return;const u=db.users[String(m.user||"").toLowerCase().trim()];if(!u)return out(ws,{t:"finfo",m:"No user found with that username."});
-   u.pro=!!m.on;dirty=true;allPro();out(ws,{t:"finfo",m:(m.on?"Granted Pro to ":"Removed Pro from ")+u.name})}
-  else if(m.t==="proall"){if(db.admin!==me.name)return;db.proAll=!!m.on;dirty=true;allPro()}
-  else if(m.t==="vc"){ws.vc=(m.sid&&isMember(ws.uid,m.sid)&&chOf(m.sid).voice.includes(m.slug))?m.sid+"."+m.slug:null;all({t:"pres",list:pres()})}
-  else if(m.t==="sig"&&ws.vc){wss.clients.forEach(c=>c.uid===m.to&&c.vc===ws.vc&&out(c,{t:"sig",from:ws.uid,k:m.k,d:m.d}))}
- });
- ws.on("close",()=>{if(ws.uid)all({t:"pres",list:pres()})});
-};
-setInterval(()=>wss.clients.forEach(c=>{if(c.dead)return c.terminate();c.dead=true;c.ping()}),30000);
-server.on("upgrade",(req,s,head)=>{const k=req.headers["sec-websocket-key"];
- if(!k||String(req.headers.upgrade).toLowerCase()!=="websocket"){s.destroy();return}
- s.write("HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: "+crypto.createHash("sha1").update(k+GUID).digest("base64")+"\r\n\r\n");
- const ws=new Sock(s);if(head&&head.length)ws.buf=head;clients.add(ws);onConn(ws);if(ws.buf.length)ws.parse()});
-server.listen(PORT,"0.0.0.0",()=>console.log("Huddle running on port "+PORT));
+   wss.clients.forEach(c=>
