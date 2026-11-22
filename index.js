@@ -615,7 +615,7 @@ function drawSettings(){const c=$("setc");const claim=(wallet.quests||[]).some(q
  const T={account:"Account",privacy:"Data & Privacy",notif:"Notifications",appear:"Appearance",about:"About Huddle",shop:"Shop",quests:"Quests"};$("sett").textContent=sv?T[sv]:"Settings";
  const row=(k,i,t,r)=>\`<button class="srow" data-sv="\${k}"><span class="si">\${i}</span>\${t}<i>\${r||"›"}</i></button>\`;let h="";
  if(!sv)h=\`<div class="sgrp">Account Settings</div><div class="slist">\${row("account","👤","Account")}\${row("privacy","🔒","Data & Privacy")}\${row("notif","🔔","Notifications")}</div><div class="sgrp">App Settings</div><div class="slist">\${row("appear","🎨","Appearance")}\${row("about","ℹ️","About Huddle")}</div><div class="sgrp">Billing Settings</div><div class="slist">\${row("shop","🛍️","Shop","🔶 "+(wallet.orbs||0))}\${row("quests","🎯","Quests",claim?"🔴":"›")}\${row("pro","✨","Huddle Pro (Nitro)",pro.pro?"Active":"›")}</div>\`;
- else if(sv==="account")h=\`<div class="pc" id="setcard"></div><div class="sbox" style="margin-top:12px"><button class="go" id="sedit" style="margin:0">Edit profile</button></div><div class="sbox"><button class="go" id="slogout" style="margin:0;background:var(--panel);color:var(--text)">Log out</button></div>\`;
+ else if(sv==="account")h=\`<div class="pc" id="setcard"></div><div class="sbox" style="margin-top:12px"><button class="go" id="sedit" style="margin:0">Edit profile</button></div><div class="sbox"><button class="go" id="slogout" style="margin:0;background:var(--panel);color:var(--text)">Log out</button></div>\${pro.admin?\`<div class="sbox bk"><b>Server backup (admin)</b><p class="sub" style="text-align:left;font-size:13px;margin:6px 0 10px">Render’s free plan can erase everything when it restarts. Download a backup now and then. After a wipe, make a new account (it becomes admin) and restore the file here.</p><button class="go" id="bkd" style="margin:0">Download backup</button><label class="go" style="display:block;text-align:center;cursor:pointer;margin:8px 0 0;background:var(--panel);color:var(--text)">Restore from backup<input type="file" id="bkr" accept="application/json,.json" hidden></label></div>\`:""}\`;
  else if(sv==="privacy")h=\`<div class="sbox"><label>Who can send me friend requests</label>\${pch("nofr",[["0","Everyone"],["1","Nobody"]])}<label>Appear as</label>\${pch("stat",[["online","Online"],["idle","Idle"],["dnd","Do not disturb"],["invisible","Invisible"]])}<p class="sub" style="font-size:13px;text-align:left;margin:10px 0 0">Your profile is visible to people who share a server with you or are your friends.</p></div>\`;
  else if(sv==="notif")h=\`<div class="sbox"><label>Message sounds</label>\${sch("snd",[["1","On"],["0","Off"]])}</div>\`;
  else if(sv==="appear")h=\`<div class="sbox"><label>Theme</label>\${sch("theme",[["dark","Dark"],["amoled","AMOLED"],["light","Light"]])}<label for="sacc">Accent color</label><input type="color" id="sacc" data-set="acc" value="\${hx(SET.acc,"#ffb84d")}"><label>Compact messages</label>\${sch("compact",[["0","Off"],["1","On"]])}<label for="sfs">Text size</label><input type="range" id="sfs" min="13" max="19" data-set="fs" value="\${SET.fs}"><label>Reduce motion</label>\${sch("rm",[["0","Off"],["1","On"]])}</div>\`;
@@ -635,7 +635,10 @@ $("set").addEventListener("click",e=>{const b=e.target.closest("[data-sv]");if(b
  const st=e.target.closest("[data-st]");if(st){shopTab=st.dataset.st;drawSettings();return}
  const sh=e.target.closest("[data-shop]");if(sh){if(sh.dataset.act==="buy")send({t:"buy",id:sh.dataset.shop});else equip(sh.dataset.shop);return}
  const q=e.target.closest("[data-q]");if(q){send({t:"qclaim",id:q.dataset.q});return}
- if(e.target.id==="sedit"){closeSettings();startOnb(true)}if(e.target.id==="slogout")$("logout").click()});
+ if(e.target.id==="sedit"){closeSettings();startOnb(true)}if(e.target.id==="slogout")$("logout").click();
+ if(e.target.id==="bkd")location.href="/backup?token="+encodeURIComponent(ls.get("huddle_token")||"")});
+$("set").addEventListener("change",async e=>{if(e.target.id!=="bkr")return;const f=e.target.files[0];e.target.value="";if(!f)return;
+ try{const r=await fetch("/restore?token="+encodeURIComponent(ls.get("huddle_token")||""),{method:"POST",body:f});if(!r.ok)throw 0;toast("Restored. Reloading…");setTimeout(()=>location.reload(),1200)}catch(x){toast("That backup couldn’t be restored.")}});
 $("set").addEventListener("input",e=>{const k=e.target.dataset.set;if(!k||(e.target.type!=="color"&&e.target.type!=="range"))return;SET[k]=e.target.value;saveSet()});
 const _handle=handle;
 handle=function(m){_handle(m);
@@ -747,7 +750,15 @@ const DEFAULT_ICE=[{urls:["stun:stun.l.google.com:19302","stun:stun1.l.google.co
 // To use your own TURN server for calls, set the ICE_SERVERS environment variable to a JSON list.
 let ICE=JSON.stringify(DEFAULT_ICE);try{if(process.env.ICE_SERVERS){JSON.parse(process.env.ICE_SERVERS);ICE=process.env.ICE_SERVERS}}catch(e){}
 const page=Buffer.from(HTML.replace("__ICE__",()=>ICE));
-const server=http.createServer((q,r)=>{r.writeHead(200,{"Content-Type":"text/html; charset=utf-8"});r.end(q.method==="HEAD"?undefined:page)});
+const server=http.createServer((q,r)=>{const u=new URL(q.url,"http://x");
+ if(u.pathname==="/backup"||u.pathname==="/restore"){const n=db.tokens[u.searchParams.get("token")||""];
+  if(!n||db.admin!==n){r.writeHead(403);return r.end("Admin only")}
+  if(u.pathname==="/backup"){r.writeHead(200,{"Content-Type":"application/json","Content-Disposition":"attachment; filename=huddle-backup.json"});return r.end(JSON.stringify(db))}
+  if(q.method!=="POST"){r.writeHead(405);return r.end()}
+  const ch=[];let size=0;q.on("data",d=>{size+=d.length;if(size>80e6){r.writeHead(413);r.end();q.destroy()}else ch.push(d)});
+  q.on("end",()=>{try{const d=JSON.parse(Buffer.concat(ch).toString());if(!d||typeof d.users!=="object"||Array.isArray(d.users))throw 0;
+   db=Object.assign({users:{},tokens:{},servers:{},ms:[],msgs:{},fr:[],emojis:{},admin:null,proAll:false},d);postLoad();dirty=true;r.writeHead(200);r.end("ok");setTimeout(()=>wss.clients.forEach(c=>c.terminate()),300)}catch(e){r.writeHead(400);r.end("Bad backup file")}});return}
+ r.writeHead(200,{"Content-Type":"text/html; charset=utf-8"});r.end(q.method==="HEAD"?undefined:page)});
 
 const hx=(c,d)=>/^#[0-9a-f]{6}$/i.test(c||"")?c:d,en=(v,l,d)=>l.includes(v)?v:d,str=(s,n)=>String(s==null?"":s).slice(0,n);
 function cleanProfile(p){p=p||{};const a=p.av||{},b=p.bn||{},n=p.nm||{};
@@ -798,27 +809,4 @@ const onConn=ws=>{
     if(pass.length<6||pass.length>100)return out(ws,{t:"autherr",m:"Password must be at least 6 characters."});
     if(db.users[name])return out(ws,{t:"autherr",m:"That username is taken."});
     const salt=crypto.randomBytes(16).toString("hex");
-    db.users[name]={id:crypto.randomBytes(6).toString("hex"),salt,hash:hash(pass,salt).toString("hex"),profile:null,ts:Date.now(),name};if(!db.admin)db.admin=name;dirty=true;
-    return login(name)}
-   if(m.t==="login"){const u=db.users[name];
-    if(!u||!crypto.timingSafeEqual(hash(pass,u.salt),Buffer.from(u.hash,"hex")))return out(ws,{t:"autherr",m:"Wrong username or password."});
-    return login(name)}
-   return}
-  const me=byId(ws.uid);if(!me)return;
-  const now=Date.now();
-  if(m.t==="profile"){const p=cleanProfile(m.p);if(!p)return;me.profile=p;dirty=true;all({t:"profiles",list:profiles()})}
-  else if(m.t==="create"&&me.profile){const name=str(m.name,30).trim();
-   if(name.length<2)return out(ws,{t:"err",m:"Server name needs at least 2 characters."});
-   if(Object.values(db.servers).filter(s=>s.owner===ws.uid).length>=10)return out(ws,{t:"err",m:"You can own up to 10 servers."});
-   let id;do{id=rnd(8,"abcdefghjkmnpqrstuvwxyz23456789")}while(db.servers[id]);
-   let code;do{code=rnd(6,"ABCDEFGHJKMNPQRSTUVWXYZ23456789")}while(Object.values(db.servers).some(s=>s.code===code));
-   const t=TPL[m.tpl]||TPL.own;
-   db.servers[id]={name,owner:ws.uid,code,ts:now,icon:IMG.test(m.icon||"")&&m.icon.length<40000?m.icon:"",channels:{text:[...t.text],voice:[...t.voice]}};
-   db.ms.push({uid:ws.uid,sid:id});dirty=true;allMine();out(ws,{t:"joined",sid:id})}
-  else if(m.t==="join"&&me.profile){const code=str(m.code,12).trim().toUpperCase();const id=Object.keys(db.servers).find(s=>db.servers[s].code===code);
-   if(!id)return out(ws,{t:"err",m:"No server found with that code."});
-   if(!isMember(ws.uid,id)){db.ms.push({uid:ws.uid,sid:id});dirty=true;allMine()}out(ws,{t:"joined",sid:id})}
-  else if(m.t==="leave"){const s=db.servers[m.sid];if(!s||s.owner===ws.uid)return;db.ms=db.ms.filter(x=>!(x.uid===ws.uid&&x.sid===m.sid));dirty=true;if(ws.vc&&ws.vc.startsWith(m.sid+".")){ws.vc=null;all({t:"pres",list:pres()})}ws.sid=null;allMine()}
-  else if(m.t==="delete"){const s=db.servers[m.sid];if(!s||s.owner!==ws.uid)return;delete db.servers[m.sid];db.ms=db.ms.filter(x=>x.sid!==m.sid);
-   Object.keys(db.msgs).forEach(k=>{if(k.startsWith(m.sid+"/"))delete db.msgs[k]});dirty=true;
-   wss.clients.forEach(c=>
+    db.users[name]={id:crypto.randomBytes(6).toString("hex"),salt,hash:hash(pass,salt).toString("hex"),profile:null,ts:Date.now
